@@ -24,8 +24,12 @@ public class TeamController {
 	@Autowired
 	private TeamService service;
 	
+	@GetMapping ("/")
+	private String home() {
+		return "Welcome to Team Controller";
+	}
 	@PostMapping("/add")
-	private ResponseEntity<Team> addmember(Team t) {
+	private ResponseEntity<Team> addmember(@RequestBody Team t) {
 		Team team= service.addMember(t);
 		return ResponseEntity.ok(team);
 	}
